@@ -10,12 +10,25 @@ using RapidBot.Models;
 using RapidBot.Data;
 using RapidBot.Helpers;
 using System.Linq;
+using AutoMapper;
+using RapidBot.Service;
+using RapidBot.Service.DTOs;
 
 namespace RapidBot.Dialogs
 {
     [Serializable]
     public class RootDialog : IDialog<object>
     {
+        [NonSerialized]
+        private readonly IMapper Mapper;
+        //[NonSerialized]
+        private readonly ICustomerService customerService;
+        public RootDialog(IMapper _mapper, ICustomerService _customerService)
+        {
+            Mapper = _mapper;
+            customerService = _customerService;
+        }
+
         public async Task StartAsync(IDialogContext context)
         {
             context.Wait(ProcessMessageAsync);
@@ -64,8 +77,11 @@ namespace RapidBot.Dialogs
                     userProfile = await responseMessage.Content.ReadAsAsync<UserProfile>();
                 }
 
-                Customer UserManager = new Customer();
-                UserManager = Singleton.GetIRapidBotUoW.CustomerRepository.Get(w => w.Email.Equals(userProfile.userPrincipalName, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+                //Customer UserManager = new Customer();
+                //UserManager = Singleton.GetIRapidBotUoW.CustomerRepository.Get(w => w.Email.Equals(userProfile.userPrincipalName, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+
+                CustomerDto UserManager = new CustomerDto();
+                UserManager = customerService.GetCustomerByEmail(userProfile.userPrincipalName);
 
                 if (UserManager != null)
                 {

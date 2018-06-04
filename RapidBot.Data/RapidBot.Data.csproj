@@ -52,9 +52,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Configuration\CustomerConfiguration.cs" />
+    <Compile Include="Configuration\OrderConfiguration.cs" />
+    <Compile Include="Configuration\OrderItemConfiguration.cs" />
+    <Compile Include="Configuration\ProductConfiguration.cs" />
+    <Compile Include="Configuration\SupplierConfiguration.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>RapidBotDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IRapidBotUoW.cs" />
     <Compile Include="Order.cs">
@@ -82,8 +94,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RapidBotDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="RapidBotEntities.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\OrderItemRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\RapidBotUoW.cs" />
+    <Compile Include="Repositories\SupplierRepository.cs" />
     <Compile Include="Supplier.cs">
       <DependentUpon>RapidBotDataModel.tt</DependentUpon>
     </Compile>
@@ -117,7 +135,12 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RapidBot.Model\RapidBot.Model.csproj">
+      <Project>{7310cf70-8510-4d71-bef0-e49d64d057d2}</Project>
+      <Name>RapidBot.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

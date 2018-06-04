@@ -4,12 +4,31 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using AutoMapper;
+using RapidBot.Service;
+using RapidBot.Controllers;
+using Autofac;
+using Microsoft.Bot.Builder.Dialogs.Internals;
+using System;
 
 namespace RapidBot
 {
     [BotAuthentication]
-    public class MessagesController : ApiController
+    public class MessagesController : BaseController
     {
+        [NonSerialized]
+        private IMapper Mapper;
+        [NonSerialized]
+        private ICustomerService customerService;
+
+        private readonly ILifetimeScope scope;
+
+        public MessagesController(ILifetimeScope scope)
+        {
+            this.scope = scope;
+            //Mapper = _mapper;
+            //customerService = _customerService;
+        }
         /// <summary>
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
@@ -18,7 +37,13 @@ namespace RapidBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
+                using (var scope = DialogModule.BeginLifetimeScope(this.scope, activity))
+                {
+                    //Mapper = scope.Resolve<IMapper>();
+                    //customerService = scope.Resolve<ICustomerService>();
+                    var dialog = scope.Resolve<IDialog<object>>();
+                    await Conversation.SendAsync(activity, () => dialog);
+                }
             }
             else
             {

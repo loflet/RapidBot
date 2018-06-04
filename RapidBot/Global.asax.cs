@@ -1,4 +1,5 @@
 ﻿using AuthBot.Models;
+using RapidBot.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,8 +13,11 @@ namespace RapidBot
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
-        {
+        {            
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            //Autofac configuration
+            Bootstrapper.Run();
 
             AuthSettings.ClientId = ConfigurationManager.AppSettings["ActiveDirectory.ClientId"];
             AuthSettings.ClientSecret = ConfigurationManager.AppSettings["ActiveDirectory.ClientSecret"];

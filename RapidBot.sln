@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidBot", "RapidBot\RapidB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidBot.Data", "RapidBot.Data\RapidBot.Data.csproj", "{0ACBB6B5-F050-46D3-9E36-55F34F34A31B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidBot.Model", "RapidBot.Model\RapidBot.Model.csproj", "{7310CF70-8510-4D71-BEF0-E49D64D057D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidBot.Service", "RapidBot.Service\RapidBot.Service.csproj", "{59A0FF98-EEDE-47BA-A0C9-2CE25AE26DC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{0ACBB6B5-F050-46D3-9E36-55F34F34A31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ACBB6B5-F050-46D3-9E36-55F34F34A31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ACBB6B5-F050-46D3-9E36-55F34F34A31B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7310CF70-8510-4D71-BEF0-E49D64D057D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7310CF70-8510-4D71-BEF0-E49D64D057D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7310CF70-8510-4D71-BEF0-E49D64D057D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7310CF70-8510-4D71-BEF0-E49D64D057D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59A0FF98-EEDE-47BA-A0C9-2CE25AE26DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59A0FF98-EEDE-47BA-A0C9-2CE25AE26DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59A0FF98-EEDE-47BA-A0C9-2CE25AE26DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59A0FF98-EEDE-47BA-A0C9-2CE25AE26DC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,6 +21,11 @@ namespace RapidBot.Dialogs
         [NonSerialized]
         private RapidBotUoW _rapidBotUoW = new RapidBotUoW();
 
+        public LUISDialog()
+        {
+
+        }
+
         //Type command such as "hi" or "hello" to enter this intent
         [LuisIntent("Greeting")]
         public async Task Greeting(IDialogContext context, LuisResult result)
